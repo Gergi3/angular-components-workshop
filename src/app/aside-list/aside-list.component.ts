@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IPost } from '../interfaces/IPost';
+import { PostsService } from '../posts.service';
 
 @Component({
   selector: 'app-aside-list',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsideListComponent implements OnInit {
 
-  constructor() { }
+  posts!: IPost[]
+  constructor(
+    private service: PostsService
+  ) { }
 
   ngOnInit(): void {
+    this.service.getAllLimited(5).subscribe(x => this.posts = x);
   }
 
 }

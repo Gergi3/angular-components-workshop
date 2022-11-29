@@ -11,12 +11,10 @@ import { Observable, map } from 'rxjs';
 export class ThemesService {
   constructor(
     private http: HttpClient,
-    private utils: UtilsService
   ) { }
 
   getAll(): Observable<ITheme[]> {
-    let url = this.utils.parseRequestUrl(requestsUrls.themes);
-    return this.http.get<ITheme[]>(url);
+    return this.http.get<ITheme[]>(requestsUrls.themes);
   }
 
   getAllSortedBySubscription(sort: 'desc' | 'asc' = 'desc'): Observable<ITheme[]> {
