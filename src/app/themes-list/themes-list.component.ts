@@ -17,6 +17,6 @@ export class ThemesListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.service.getAll().subscribe(x => this.themes = x);
+    this.service.getAllSortedBySubscription().subscribe(x => this.themes = x);
   }
 }
