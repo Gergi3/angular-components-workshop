@@ -1,6 +1,6 @@
 <div class="theme-title">
-  <app-themes-list-item></app-themes-list-item>
-  <app-themes-list-item></app-themes-list-item>
-  <app-themes-list-item></app-themes-list-item>
-  <app-themes-list-item></app-themes-list-item>
+  <app-themes-list-item
+    *ngFor="let theme of themes"
+    [theme]="theme">
+  </app-themes-list-item>
 </div>
