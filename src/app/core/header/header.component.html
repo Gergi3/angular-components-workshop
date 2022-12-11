@@ -3,20 +3,24 @@
       <div class="logo-wrap">
         <p class="logo"><span class="logo">SoftUni Forum</span></p>
       </div>
-      <div class="mini-navbar" *ngIf="!isLogged">
+      <div class="mini-navbar">
         <ul>
-          <li>
-            <a [routerLink]="'profile'">John's profile</a>
-          </li>
-          <li>
-            <a href="#">Logout</a>
-          </li>
-          <li>
-            <a [routerLink]="'login'">Login</a>
-          </li>
-          <li>
-            <a [routerLink]="'register'">Register</a>
-          </li>
+          <ng-container *ngIf="authService.isLoggedIn; else loggedOut">
+            <li>
+              <a [routerLink]="'profile'">John's profile</a>
+            </li>
+            <li>
+              <a [routerLink]="'logout'">Logout</a>
+            </li>
+          </ng-container>
+          <ng-template #loggedOut>
+            <li>
+              <a [routerLink]="'login'">Login</a>
+            </li>
+            <li>
+              <a [routerLink]="'register'">Register</a>
+            </li>
+          </ng-template>
         </ul>
       </div>
     </div>
