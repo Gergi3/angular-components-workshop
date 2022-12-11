@@ -6,6 +6,8 @@ import { ThemesListComponent } from './themes-list/themes-list.component';
 import { ThemesListItemComponent } from './themes-list-item/themes-list-item.component';
 import { AsideListComponent } from './aside-list/aside-list.component';
 import { AsideListItemComponent } from './aside-list-item/aside-list-item.component';
+import { NewThemeComponent } from './new-theme/new-theme.component';
+import { ThemeDetailsComponent } from './theme-details/theme-details.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { AsideListItemComponent } from './aside-list-item/aside-list-item.compon
     ThemesListComponent,
     ThemesListItemComponent,
     AsideListComponent,
-    AsideListItemComponent
+    AsideListItemComponent,
+    NewThemeComponent,
+    ThemeDetailsComponent
   ],
   imports: [
     CommonModule
