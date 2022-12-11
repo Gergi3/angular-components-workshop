@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UtilsService } from './utils.service';
-import { requestsUrls } from './constants';
-import { ITheme } from './interfaces/ITheme';
+import { UtilsService } from '../utils.service';
+import { requestsUrls } from '../constants';
+import { ITheme } from '../interfaces/ITheme';
 import { Observable, map } from 'rxjs';
 
 @Injectable({

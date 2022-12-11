@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ITheme } from '../interfaces/ITheme';
+import { ITheme } from '../../interfaces/ITheme';
 import { ThemesService } from '../themes.service';
 import { Observable, map, of } from 'rxjs';
 

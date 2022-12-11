@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ITheme } from '../interfaces/ITheme';
+import { ITheme } from '../../interfaces/ITheme';
 
 @Component({
   selector: 'app-themes-list-item',
