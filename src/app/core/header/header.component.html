@@ -6,10 +6,16 @@
       <div class="mini-navbar" *ngIf="!isLogged">
         <ul>
           <li>
-            <a href="#">Login</a>
+            <a [routerLink]="'profile'">John's profile</a>
           </li>
           <li>
-            <a href="#">Register</a>
+            <a href="#">Logout</a>
+          </li>
+          <li>
+            <a [routerLink]="'login'">Login</a>
+          </li>
+          <li>
+            <a [routerLink]="'register'">Register</a>
           </li>
         </ul>
       </div>
@@ -17,13 +23,13 @@
     <nav>
       <ul>
         <li>
-          <a href="#">Home</a>
+          <a [routerLink]="'home'">Home</a>
         </li>
         <li>
-          <a href="#">Themes</a>
+          <a [routerLink]="'themes'">Themes</a>
         </li>
         <li>
-          <a href="#">New Theme</a>
+          <a [routerLink]="['themes', 'new']">New Theme</a>
         </li>
       </ul>
     </nav>

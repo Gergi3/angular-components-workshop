@@ -8,6 +8,7 @@ import { AsideListComponent } from './aside-list/aside-list.component';
 import { AsideListItemComponent } from './aside-list-item/aside-list-item.component';
 import { NewThemeComponent } from './new-theme/new-theme.component';
 import { ThemeDetailsComponent } from './theme-details/theme-details.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ThemeDetailsComponent } from './theme-details/theme-details.component';
     ThemeDetailsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     ThemesComponent
