@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ITheme } from '../../interfaces/ITheme';
+import { ITheme } from '../../shared/interfaces/theme.model';
 import { ThemesService } from '../themes.service';
 import { AuthService } from '../../authentication/auth.service';
 

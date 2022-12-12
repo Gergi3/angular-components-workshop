@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { PostsService } from '../posts.service';
+import { IPost } from '../../shared/interfaces/post.model';
+import { ActivatedRoute } from '@angular/router';
+import { ThemesService } from '../themes.service';
+import { ITheme } from 'src/app/shared/interfaces/theme.model';
+import { AuthService } from '../../authentication/auth.service';
 
 @Component({
   selector: 'app-theme-details',
@@ -7,9 +13,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThemeDetailsComponent implements OnInit {
 
-  constructor() { }
+  theme!: ITheme;
+  posts!: IPost[];
+  isLoggedIn = this.authService.isLoggedIn;
+
+  constructor(
+    private themesService: ThemesService,
+    private postsService: PostsService,
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    let themeId = this.route.snapshot.params['id'];
+    this.themesService.getById(themeId)
+      .subscribe(x => this.theme = x)
+    this.postsService.getAllByThemeId(themeId)
+      .subscribe(x => this.posts = x)
   }
 
 }

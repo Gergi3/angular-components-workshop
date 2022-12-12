@@ -12,8 +12,13 @@
           </div>
         </div>
         <div class="subscribers">
-          <button (click)="subscribeHandler()" [class]="isOwner ? 'unsubscribe' : 'subscribe'">{{isOwner ? 'Unsubscribe' : 'Subscribe'}}</button>
-          <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
+          <button
+            *ngIf="isLoggedIn"
+            (click)="subscribeHandler()"
+            [class]="isSubscriber ? 'unsubscribe' : 'subscribe'">
+            {{isSubscriber ? 'Unsubscribe' : 'Subscribe'}}
+          </button>
+          <p>Subscribers: <span>{{subscribers}}</span></p>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UtilsService } from '../utils.service';
 import { requestsUrls } from '../constants';
-import { ITheme } from '../interfaces/ITheme';
+import { ITheme } from '../shared/interfaces/theme.model';
 import { Observable, map } from 'rxjs';
 
 @Injectable({
@@ -30,5 +30,9 @@ export class ThemesService {
           return 0;
         }))
     );
+  }
+
+  getById(id: string) {
+    return this.http.get<ITheme>(requestsUrls.themesId(id));
   }
 }

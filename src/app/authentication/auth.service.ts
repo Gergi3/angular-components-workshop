@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { IUser } from '../interfaces/IUser';
+import { IUser } from '../shared/interfaces/user.model';
 import { LocalStorageService } from '../shared/local-storage.service';
 import { UsersService } from '../user/users.service';
 
@@ -9,11 +9,7 @@ import { UsersService } from '../user/users.service';
 })
 export class AuthService {
   currentUser: IUser | null = null;
-  currentUserChange = new Subject<IUser | null>();
-  
-  get isLoggedIn() {
-    return !!this.currentUser;
-  }
+  get isLoggedIn() { return !!this.currentUser; }
 
   constructor(
     private localStorage: LocalStorageService,
@@ -23,11 +19,6 @@ export class AuthService {
   }
 
   initialize() {
-    this.currentUserChange.subscribe((value) => {
-      this.currentUser = value;
-      this.localStorage.set('user', JSON.stringify(value));
-    });
-
     let localStorageUser: IUser | null = JSON.parse(this.localStorage.get('user') || 'null');
     this.changeUser(localStorageUser);
   }
@@ -47,6 +38,7 @@ export class AuthService {
   }
 
   changeUser(user: IUser | null) {
-    this.currentUserChange.next(user);
+    this.currentUser = user;
+    this.localStorage.set('user', JSON.stringify(user));
   }
 }

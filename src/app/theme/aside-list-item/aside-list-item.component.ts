@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IPost } from '../../interfaces/IPost';
+import { IPost } from '../../shared/interfaces/post.model';
 
 @Component({
   selector: 'app-aside-list-item',

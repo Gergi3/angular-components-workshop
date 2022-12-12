@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ITheme } from '../../interfaces/ITheme';
+import { Component,Input } from '@angular/core';
+import { ITheme } from '../../shared/interfaces/theme.model';
 import { AuthService } from '../../authentication/auth.service';
 
 @Component({
@@ -7,32 +7,30 @@ import { AuthService } from '../../authentication/auth.service';
   templateUrl: './themes-list-item.component.html',
   styleUrls: ['./themes-list-item.component.scss']
 })
-export class ThemesListItemComponent implements OnInit {
+export class ThemesListItemComponent {
   @Input() theme!: ITheme;
-  isOwner!: boolean;
+  isLoggedIn = this.authService.isLoggedIn;
+  
+  get isSubscriber() {
+    return this.theme.subscribers
+      .some((x: string) => x === this.authService.currentUser?._id);
+  }
+  get subscribers() {
+    return this.theme.subscribers.length;
+  }
 
   constructor(
     private authService: AuthService
   ) { }
 
-  ngOnInit(): void {
-    this.isOwner = (this.authService.currentUser?.themes || [])
-      .some((x: string) => x === this.theme._id);
-  }
-
   subscribeHandler() {
-    if (!this.authService.currentUser?.themes) {
-      return;
-    }
-    
-    if (this.isOwner) {
-      this.authService.currentUser.themes = this.authService.currentUser.themes.filter(x => x == this.theme._id);
-      this.isOwner = false;
-    } else {
-      this.authService.currentUser.themes.push(this.theme._id);
-      this.isOwner = true;
-    }
-    
+    let userId = this.authService.currentUser?._id
 
+    if (this.isSubscriber) {
+      this.theme.subscribers = this.theme.subscribers
+        .filter(x => x !== userId);
+    } else if (userId) {
+      this.theme.subscribers.push(userId);
+    }
   }
 }

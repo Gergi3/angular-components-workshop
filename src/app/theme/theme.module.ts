@@ -10,6 +10,8 @@ import { NewThemeComponent } from './new-theme/new-theme.component';
 import { ThemeDetailsComponent } from './theme-details/theme-details.component';
 import { RouterModule } from '@angular/router';
 import { HomeModule } from '../home/home.module';
+import { ThemeDetailsCommentComponent } from './theme-details-comment/theme-details-comment.component';
+import { ThemeCreateCommentComponent } from './theme-create-comment/theme-create-comment.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { HomeModule } from '../home/home.module';
     AsideListComponent,
     AsideListItemComponent,
     NewThemeComponent,
-    ThemeDetailsComponent
+    ThemeDetailsComponent,
+    ThemeDetailsCommentComponent,
+    ThemeCreateCommentComponent
   ],
   imports: [
     CommonModule,

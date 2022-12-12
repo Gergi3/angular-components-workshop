@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser } from '../interfaces/IUser';
+import { IUser } from '../shared/interfaces/user.model';
 import UsersJson from './users.json';
 
 @Injectable({
