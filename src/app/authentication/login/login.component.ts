@@ -28,8 +28,7 @@ export class LoginComponent implements OnInit {
     const email = this.loginForm.get('email')?.value || '';
     const password = this.loginForm.get('password')?.value || '';
 
-    const loginInfo = { email, password };
-    this.authService.login(loginInfo);
+    this.authService.login(email, password);
     this.router.navigate(['/home']);
   }
 

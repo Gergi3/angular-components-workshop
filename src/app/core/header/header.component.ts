@@ -7,19 +7,21 @@ import { AuthService } from '../../authentication/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnChanges {
-  isLoggedIn!: boolean;
+  isLoggedIn: boolean = this.authService.isLoggedIn;
   username: string = this.authService.currentUser?.username || 'Guest';
 
   constructor(
-    public authService: AuthService
+    private authService: AuthService
   ) { 
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn
+    this.authService.currentUserChange.subscribe(value => {
+      this.username = value?.username || 'Guest';
+      this.isLoggedIn = !!value;
+    });
   }
   
   ngOnChanges() {
-    this.isLoggedIn = this.authService.isLoggedIn;
   }
 }

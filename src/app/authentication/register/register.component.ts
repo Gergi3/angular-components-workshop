@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   registerHandler() {
@@ -30,8 +32,8 @@ export class RegisterComponent {
 
     if (password !== rePassword) return;
 
-    const newUser = { username, email, password, tel };
-    this.authService.register(newUser)
+    this.authService.register(email, username, password, tel);
+    this.router.navigate(['/home']);
     this.registerForm.reset();
   }
 }

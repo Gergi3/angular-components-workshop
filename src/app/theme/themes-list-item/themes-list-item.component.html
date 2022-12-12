@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="subscribers">
-          <!-- <button class="subscribe">Subscribe</button> -->
+          <button (click)="subscribeHandler()" [class]="isOwner ? 'unsubscribe' : 'subscribe'">{{isOwner ? 'Unsubscribe' : 'Subscribe'}}</button>
           <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
         </div>
       </div>
