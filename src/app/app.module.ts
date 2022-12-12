@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,9 @@ import { AuthenticationModule } from './authentication/authentication.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    CoreModule,
     AuthenticationModule,
+    CoreModule,
+    SharedModule,
     HomeModule,
     ThemeModule,
   ],

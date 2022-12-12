@@ -5,9 +5,9 @@
       </div>
       <div class="mini-navbar">
         <ul>
-          <ng-container *ngIf="authService.isLoggedIn; else loggedOut">
+          <ng-container *ngIf="isLoggedIn; else loggedOut">
             <li>
-              <a [routerLink]="'profile'">John's profile</a>
+              <a [routerLink]="'profile'">{{username}}'s profile</a>
             </li>
             <li>
               <a [routerLink]="'logout'">Logout</a>
