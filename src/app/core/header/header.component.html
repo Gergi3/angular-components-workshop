@@ -32,7 +32,7 @@
         <li>
           <a [routerLink]="'themes'">Themes</a>
         </li>
-        <li>
+        <li *ngIf="isLoggedIn">
           <a [routerLink]="['themes', 'new']">New Theme</a>
         </li>
       </ul>

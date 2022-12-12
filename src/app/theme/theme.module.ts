@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { HomeModule } from '../home/home.module';
 import { ThemeDetailsCommentComponent } from './theme-details-comment/theme-details-comment.component';
 import { ThemeCreateCommentComponent } from './theme-create-comment/theme-create-comment.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ThemeCreateCommentComponent } from './theme-create-comment/theme-create
   imports: [
     CommonModule,
     RouterModule,
-    HomeModule
+    HomeModule,
+    ReactiveFormsModule
   ],
   exports: [
     ThemesComponent
