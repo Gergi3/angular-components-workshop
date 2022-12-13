@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../authentication/auth.service';
 
 @Component({
@@ -6,14 +6,8 @@ import { AuthService } from '../../authentication/auth.service';
   templateUrl: './theme-create-comment.component.html',
   styleUrls: ['./theme-create-comment.component.scss']
 })
-export class ThemeCreateCommentComponent implements OnInit {
-  username = this.authService.currentUser?.username;
+export class ThemeCreateCommentComponent {
+  @Input() username!: string;
 
-  constructor(
-    private authService: AuthService
-  ) { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() { }
 }

@@ -11,7 +11,7 @@ export class HeaderComponent {
     return this.authService.isLoggedIn;
   }
   get username(): string {
-    return this.authService.currentUser?.username || 'Guest'
+    return this.authService.username
   }
 
   constructor(

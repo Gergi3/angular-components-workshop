@@ -1,10 +1,10 @@
 <div class="comment">
   <header class="header">
-    <p><span>{{post.userId.username}}</span> posted on <time>{{post.updatedAt}}</time></p>
+    <p><span>{{post.userId.username}}</span> posted on <time>{{post.created_at | date: 'short'}}</time></p>
   </header>
   <div class="comment-main">
     <div class="userdetails">
-      <img src="assets/profile.png" alt="avatar">
+      <img src="/assets/profile.png" alt="avatar">
     </div>
     <div class="post-content">
       <p>{{post.text}}</p>

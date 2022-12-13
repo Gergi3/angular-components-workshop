@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { requestsUrls } from '../constants';
-import { IPost } from '../shared/interfaces/post.model';
-import { filter, from, map, Observable } from 'rxjs';
+import { requestsUrls } from '../shared/constants';
+import { IPost } from '../shared/interfaces/index.model';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +18,15 @@ export class PostsService {
   }
 
   getAllLimited(limit: number): Observable<IPost[]> {
-    if (limit < 0) {
-      limit = 5;
-    }
+    if (limit < 0) limit = 5;
 
-    return this.http.get<IPost[]>(requestsUrls.posts + `?limit=${limit}`)
+    return this.http.get<IPost[]>(requestsUrls.postsWithLimit(limit))
   }
 
   getAllByThemeId(themeId: string): Observable<IPost[]> {
-    return this.http.get<IPost[]>(requestsUrls.posts)
+    return this.getAll()
       .pipe(
         map(postArr => postArr.filter(post => post.themeId._id === themeId))
-      )
+      );
   }
 }

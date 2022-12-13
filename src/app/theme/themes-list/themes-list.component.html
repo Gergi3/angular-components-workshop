@@ -1,8 +1,7 @@
-<app-homepage *ngIf="!isLoggedIn"></app-homepage>
-
 <div class="theme-title">
   <app-themes-list-item
     *ngFor="let theme of themes"
-    [theme]="theme">
+    [theme]="theme"
+    [isLoggedIn]="isLoggedIn">
   </app-themes-list-item>
 </div>

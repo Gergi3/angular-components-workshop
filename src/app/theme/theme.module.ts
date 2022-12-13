@@ -36,6 +36,5 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     ThemesComponent
   ]
-  
 })
 export class ThemeModule { }

@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loginForm = this.fb.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required]
+    email: '',
+    password: ''
   })
 
   constructor(
@@ -20,9 +20,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder
   ) { }
-
-  ngOnInit(): void {
-  }
 
   loginHandler() {
     const email = this.loginForm.get('email')?.value || '';

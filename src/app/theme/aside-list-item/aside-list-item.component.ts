@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IPost } from '../../shared/interfaces/post.model';
 
 @Component({
@@ -6,12 +6,8 @@ import { IPost } from '../../shared/interfaces/post.model';
   templateUrl: './aside-list-item.component.html',
   styleUrls: ['./aside-list-item.component.scss']
 })
-export class AsideListItemComponent implements OnInit {
+export class AsideListItemComponent {
   @Input() post!: IPost;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

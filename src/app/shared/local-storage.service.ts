@@ -15,6 +15,10 @@ export class LocalStorageService {
     return localStorage.getItem(key);
   }
 
+  public getParsed(key: string): any | null {
+    return JSON.parse(this.get(key) || 'null');
+  }
+
   public clear() {
     localStorage.clear();
   }

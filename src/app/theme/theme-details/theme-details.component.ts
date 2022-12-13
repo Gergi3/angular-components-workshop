@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
-import { IPost } from '../../shared/interfaces/post.model';
+import { IPost } from '../../shared/interfaces/index.model';
 import { ActivatedRoute } from '@angular/router';
 import { ThemesService } from '../themes.service';
 import { ITheme } from 'src/app/shared/interfaces/theme.model';
@@ -15,7 +15,12 @@ export class ThemeDetailsComponent implements OnInit {
 
   theme!: ITheme;
   posts!: IPost[];
-  isLoggedIn = this.authService.isLoggedIn;
+  get isLoggedIn() {
+    return this.authService.isLoggedIn;
+  }
+  get username() {
+    return this.authService.username
+  }
 
   constructor(
     private themesService: ThemesService,

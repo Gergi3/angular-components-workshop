@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser } from '../shared/interfaces/user.model';
+import { IUser } from '../shared/interfaces/index.model';
 import UsersJson from './users.json';
 
 @Injectable({
@@ -9,10 +9,10 @@ export class UsersService {
 
   constructor() { }
 
-  public nextId = 1;
+  private nextId = 1;
 
   users: IUser[] = UsersJson;
-  
+
   createUser(email: string, username: string, password: string, tel: string) {
     const currentTime = new Date().toLocaleString();
     const user = {
@@ -23,18 +23,14 @@ export class UsersService {
       created_at: currentTime,
       updatedAt: currentTime,
     };
-    this.addUser(user);
+    this.users.push(user);
   }
 
   getUserByEmailAndPassword(email: string, password: string) {
     return this.users.find(x => x.email === email && x.password === password) || null;
   }
 
-  addUser(user: IUser) {
-    this.users.push(user);
-  }
-
-  getNextId(): string {
+  private getNextId(): string {
     return (this.nextId++).toString();
   }
 }

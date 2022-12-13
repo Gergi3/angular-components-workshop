@@ -7,7 +7,7 @@
       <div class="theme-name-wrapper">
         <div class="theme-name">
           <h2>{{theme.themeName}}</h2>
-          <p>Date: <time>{{theme.created_at}}</time></p>
+          <p>Date: <time>{{theme.created_at | date: 'short'}}</time></p>
         </div>
         <div class="subscribers">
           <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
@@ -19,9 +19,13 @@
     <!-- comment  -->
     <app-theme-details-comment
       *ngFor="let post of posts"
+      [isLoggedIn]="isLoggedIn"
       [post]="post">
     </app-theme-details-comment>
-    <app-theme-create-comment *ngIf="isLoggedIn"></app-theme-create-comment>
+    <app-theme-create-comment
+      *ngIf="isLoggedIn"
+      [username]="username">
+    </app-theme-create-comment>
 
   </div>
 </div>

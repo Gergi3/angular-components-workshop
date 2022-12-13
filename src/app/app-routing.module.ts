@@ -14,16 +14,53 @@ import { IsNotAuthenticatedGuard } from './guards/is-not-authenticated.guard';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 
 const routes: Route[] = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomepageComponent },
-  { path: 'register', component: RegisterComponent, canActivate: [IsNotAuthenticatedGuard] },
-  { path: 'login', component: LoginComponent, canActivate: [IsNotAuthenticatedGuard] },
-  { path: 'logout', component: LogoutComponent, canActivate: [IsAuthenticatedGuard] },
-  { path: 'profile', component: UserProfileComponent, canActivate: [IsAuthenticatedGuard] },
-  { path: 'themes', component: ThemesComponent },
-  { path: 'themes/new', component: NewThemeComponent, canActivate: [IsAuthenticatedGuard] },
-  { path: 'themes/details/:id', component: ThemeDetailsComponent },
-  { path: '**', component: NotFoundComponent }
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: HomepageComponent,
+    title: 'Homepage'
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [IsNotAuthenticatedGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [IsNotAuthenticatedGuard]
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+    canActivate: [IsAuthenticatedGuard]
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+    canActivate: [IsAuthenticatedGuard]
+  },
+  {
+    path: 'themes',
+    component: ThemesComponent
+  },
+  {
+    path: 'themes/new',
+    component: NewThemeComponent,
+    canActivate: [IsAuthenticatedGuard]
+  },
+  {
+    path: 'themes/details/:id',
+    component: ThemeDetailsComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ]
 
 @NgModule({

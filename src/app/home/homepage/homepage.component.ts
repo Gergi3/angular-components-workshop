@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../authentication/auth.service';
 
 @Component({
@@ -6,14 +6,14 @@ import { AuthService } from '../../authentication/auth.service';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
-export class HomepageComponent implements OnInit {
+export class HomepageComponent {
 
-  isLoggedIn: boolean = this.authService.isLoggedIn;
+  get isLoggedIn() {
+    return this.authService.isLoggedIn
+  }
+  
   constructor(
     private authService: AuthService
   ) { }
-
-  ngOnInit(): void {
-  }
 
 }

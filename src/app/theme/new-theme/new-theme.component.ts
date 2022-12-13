@@ -23,16 +23,17 @@ export class NewThemeComponent {
 
   createThemeHandler() {
     let name = this.themeForm.get('themeName')?.value;
-    if (name) {
-      let createdTheme = this.themesService.createTheme(name);
-      createdTheme.subscribe(x => {
-        // TODO: Fix unauthorized
-        this.router.navigate([`/themes/${x._id}`]);
-      });
-    }
+
+    if (!name) return;
+    
+    let createdTheme = this.themesService.createTheme(name);
+    createdTheme.subscribe(x => {
+      // TODO: Fix unauthorized
+      this.router.navigate([`/themes/${x._id}`]);
+    });
   }
 
-  redirectToHomepage() {
+  cancelHandler() {
     this.router.navigate(['/home']);
   }
 }

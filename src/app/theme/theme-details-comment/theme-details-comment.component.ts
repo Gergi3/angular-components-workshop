@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IPost } from '../../shared/interfaces/post.model';
+import { IPost } from '../../shared/interfaces/index.model';
 import { AuthService } from '../../authentication/auth.service';
 
 @Component({
@@ -7,13 +7,14 @@ import { AuthService } from '../../authentication/auth.service';
   templateUrl: './theme-details-comment.component.html',
   styleUrls: ['./theme-details-comment.component.scss']
 })
-export class ThemeDetailsCommentComponent  {
+export class ThemeDetailsCommentComponent {
 
   @Input() post!: IPost;
-  isLoggedIn = this.authService.isLoggedIn;
+  @Input() isLoggedIn!: boolean;
 
   get isLiked() {
-    return this.post.likes.some(x => x === this.authService.currentUser?._id);
+    return this.post.likes
+      .some(x => x === this.authService.userId);
   }
   get likes() {
     return this.post.likes.length;
@@ -24,15 +25,13 @@ export class ThemeDetailsCommentComponent  {
   ) { }
 
   likeHandler() {
-    if (!this.isLoggedIn) {
+    if (!this.isLoggedIn) return;
+
+    if (!this.isLiked && this.authService.userId) {
+      this.post.likes.push(this.authService.userId);
       return;
     }
 
-    if (!this.isLiked) {
-      this.post.likes.push(this.authService.currentUser?._id || '');
-    } else {
-      this.post.likes = this.post.likes
-        .filter(x => x !== this.authService.currentUser?._id)
-    }
+    this.post.likes = this.post.likes.filter(x => x !== this.authService.userId)
   }
 }

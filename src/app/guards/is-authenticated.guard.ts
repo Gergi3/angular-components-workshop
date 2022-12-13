@@ -12,12 +12,11 @@ export class IsAuthenticatedGuard implements CanActivate {
     private authService: AuthService,
     private router: Router
   ) { }
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authService.isLoggedIn
-      ? true
-      : this.router.createUrlTree(['/home'])
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (this.authService.isLoggedIn) {
+      return true
+    }
+    return this.router.createUrlTree(['/home'])
   }
 
 }

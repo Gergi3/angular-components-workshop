@@ -1,5 +1,5 @@
-import { Component,Input } from '@angular/core';
-import { ITheme } from '../../shared/interfaces/theme.model';
+import { Component, Input } from '@angular/core';
+import { ITheme } from '../../shared/interfaces/index.model';
 import { AuthService } from '../../authentication/auth.service';
 
 @Component({
@@ -9,11 +9,11 @@ import { AuthService } from '../../authentication/auth.service';
 })
 export class ThemesListItemComponent {
   @Input() theme!: ITheme;
-  isLoggedIn = this.authService.isLoggedIn;
-  
+  @Input() isLoggedIn!: boolean;
+
   get isSubscriber() {
     return this.theme.subscribers
-      .some((x: string) => x === this.authService.currentUser?._id);
+      .some((x: string) => x === this.authService.userId);
   }
   get subscribers() {
     return this.theme.subscribers.length;
@@ -24,7 +24,7 @@ export class ThemesListItemComponent {
   ) { }
 
   subscribeHandler() {
-    let userId = this.authService.currentUser?._id
+    let userId = this.authService.userId;
 
     if (this.isSubscriber) {
       this.theme.subscribers = this.theme.subscribers

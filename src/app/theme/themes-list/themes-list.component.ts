@@ -1,24 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { ITheme } from '../../shared/interfaces/theme.model';
-import { ThemesService } from '../themes.service';
-import { AuthService } from '../../authentication/auth.service';
+import { Component, Input } from '@angular/core';
+import { ITheme } from '../../shared/interfaces/index.model';
 
 @Component({
   selector: 'app-themes-list',
   templateUrl: './themes-list.component.html',
   styleUrls: ['./themes-list.component.scss']
 })
-export class ThemesListComponent implements OnInit {
-
-  themes: ITheme[] = [];
-  isLoggedIn: boolean = this.authService.isLoggedIn;
-
-  constructor(
-    public authService: AuthService,
-    private themesService: ThemesService
-  ) { }
-
-  ngOnInit(): void {
-    this.themesService.getAllSortedBySubscription().subscribe(x => this.themes = x);
-  }
+export class ThemesListComponent {
+  @Input() themes!: ITheme[];
+  @Input() isLoggedIn!: boolean;
+  constructor() { }
 }

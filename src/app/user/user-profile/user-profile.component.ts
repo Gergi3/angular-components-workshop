@@ -1,27 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../authentication/auth.service';
-import { Router } from '@angular/router';
-import { IUser } from '../../shared/interfaces/user.model';
+import { IUser } from '../../shared/interfaces/index.model';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent {
+  user: IUser | null = this.authService.currentUser;
 
-  user!: IUser;
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) { }
-
-  ngOnInit(): void {
-    if (this.authService.currentUser) {
-      this.user = this.authService.currentUser;
-    } else {
-      this.router.navigate(['/home'])
-    }
-  }
-
 }

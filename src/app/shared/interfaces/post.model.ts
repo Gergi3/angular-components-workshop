@@ -1,5 +1,4 @@
-import { IUser } from "./user.model";
-import { ITheme } from './theme.model';
+import { IUser, ITheme } from "./index.model";
 
 export interface IPost {
   likes: string[]

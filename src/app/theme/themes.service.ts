@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UtilsService } from '../utils.service';
-import { requestsUrls } from '../constants';
-import { ITheme } from '../shared/interfaces/theme.model';
+import { requestsUrls } from '../shared/constants';
+import { ITheme } from '../shared/interfaces/index.model';
 import { Observable, map } from 'rxjs';
 
 @Injectable({
@@ -21,15 +20,17 @@ export class ThemesService {
     return this.getAll()
       .pipe(
         map(x => x.sort((a, b) => {
-          let aValue = a.subscribers.length;
-          let bValue = b.subscribers.length
+          const aValue = a.subscribers.length;
+          const bValue = b.subscribers.length
+          const isDescending = sort == 'desc';
+
           if (aValue > bValue)
-            return sort == 'desc' ? -1 : 1
+            return isDescending ? -1 : 1
           if (aValue < bValue)
-            return sort == 'desc' ? 1 : -1
+            return isDescending ? 1 : -1
           return 0;
         }))
-    );
+      );
   }
 
   getById(id: string) {
@@ -37,6 +38,6 @@ export class ThemesService {
   }
 
   createTheme(themeName: string) {
-    return this.http.post<ITheme>(requestsUrls.themes, {themeName});
+    return this.http.post<ITheme>(requestsUrls.themes, { themeName });
   }
 }

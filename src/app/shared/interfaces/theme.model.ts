@@ -1,4 +1,4 @@
-import { IUser } from "./user.model"
+import { IUser } from "./index.model"
 
 export interface ITheme {
   subscribers: string[]
