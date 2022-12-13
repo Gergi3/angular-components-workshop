@@ -13,54 +13,62 @@ import { LogoutComponent } from './authentication/logout/logout.component';
 import { IsNotAuthenticatedGuard } from './guards/is-not-authenticated.guard';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { PageTitleStrategy } from './core/page-title-strategy';
+import { UserProfileEditComponent } from './user/user-profile-edit/user-profile-edit.component';
+import { paths } from './routing-paths';
 
 const routes: Route[] = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: paths.homepage,
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: paths.homepage,
     component: HomepageComponent,
     title: 'Homepage'
   },
   {
-    path: 'register',
+    path: paths.register,
     component: RegisterComponent,
     canActivate: [IsNotAuthenticatedGuard],
     title: 'Register'
   },
   {
-    path: 'login',
+    path: paths.login,
     component: LoginComponent,
     canActivate: [IsNotAuthenticatedGuard],
     title: 'Login'
   },
   {
-    path: 'logout',
+    path: paths.logout,
     component: LogoutComponent,
     canActivate: [IsAuthenticatedGuard],
   },
   {
-    path: 'profile',
+    path: paths.profile,
     component: UserProfileComponent,
     canActivate: [IsAuthenticatedGuard],
     title: 'Profile'
   },
   {
-    path: 'themes',
+    path: paths.profileEdit,
+    component: UserProfileEditComponent,
+    canActivate: [IsAuthenticatedGuard],
+    title: 'Profile'
+  },
+  {
+    path: paths.themes,
     component: ThemesComponent,
     title: 'Themes'
   },
   {
-    path: 'themes/new',
+    path: paths.newTheme,
     component: NewThemeComponent,
     canActivate: [IsAuthenticatedGuard],
     title: 'New Theme'
   },
   {
-    path: 'themes/details/:id',
+    path: paths.themeDetails,
     component: ThemeDetailsComponent,
     title: 'Theme Details'
   },

@@ -26,7 +26,7 @@ export class NewThemeComponent {
 
     if (!name) return;
     
-    let createdTheme = this.themesService.createTheme(name);
+    let createdTheme = this.themesService.create(name);
     createdTheme.subscribe(x => {
       // TODO: Fix unauthorized
       this.router.navigate([`/themes/${x._id}`]);

@@ -25,12 +25,12 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    const loggedUser = this.usersService.getUserByEmailAndPassword(email, password);
+    const loggedUser = this.usersService.getByEmailAndPassword(email, password);
     this.changeUser(loggedUser);
   }
 
   register(email: string, username: string, password: string, tel: string) {
-    this.usersService.createUser(email, username, password, tel);
+    this.usersService.create(email, username, password, tel);
     this.login(email, password);
   }
 

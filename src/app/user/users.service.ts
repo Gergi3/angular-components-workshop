@@ -13,7 +13,7 @@ export class UsersService {
 
   users: IUser[] = UsersJson;
 
-  createUser(email: string, username: string, password: string, tel: string) {
+  create(email: string, username: string, password: string, tel: string) {
     const currentTime = new Date().toLocaleString();
     const user = {
       _id: this.getNextId(),
@@ -26,8 +26,21 @@ export class UsersService {
     this.users.push(user);
   }
 
-  getUserByEmailAndPassword(email: string, password: string) {
+  getByEmailAndPassword(email: string, password: string) {
     return this.users.find(x => x.email === email && x.password === password) || null;
+  }
+
+  getById(id: string) {
+    return this.users.find(x => x._id === id);
+  }
+
+  putById(userId: string, userInfo: { email?: string, username?: string, password?: string, tel?: string }) {
+    let user = this.users.find(x => x._id === userId);
+    Object.entries(userInfo).forEach(([k, v]) => {
+      if (user && k && v) {
+        user[k] = v;
+      }
+    })
   }
 
   private getNextId(): string {

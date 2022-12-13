@@ -37,7 +37,7 @@ export class ThemesService {
     return this.http.get<ITheme>(requestsUrls.themesId(id));
   }
 
-  createTheme(themeName: string) {
+  create(themeName: string) {
     return this.http.post<ITheme>(requestsUrls.themes, { themeName });
   }
 }
