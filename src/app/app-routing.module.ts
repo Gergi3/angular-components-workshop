@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Route } from '@angular/router';
+import { RouterModule, Route, TitleStrategy } from '@angular/router';
 
 import { ThemesComponent } from './theme/themes/themes.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
@@ -12,6 +12,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { LogoutComponent } from './authentication/logout/logout.component';
 import { IsNotAuthenticatedGuard } from './guards/is-not-authenticated.guard';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
+import { PageTitleStrategy } from './core/page-title-strategy';
 
 const routes: Route[] = [
   {
@@ -27,45 +28,58 @@ const routes: Route[] = [
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [IsNotAuthenticatedGuard]
+    canActivate: [IsNotAuthenticatedGuard],
+    title: 'Register'
   },
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [IsNotAuthenticatedGuard]
+    canActivate: [IsNotAuthenticatedGuard],
+    title: 'Login'
   },
   {
     path: 'logout',
     component: LogoutComponent,
-    canActivate: [IsAuthenticatedGuard]
+    canActivate: [IsAuthenticatedGuard],
   },
   {
     path: 'profile',
     component: UserProfileComponent,
-    canActivate: [IsAuthenticatedGuard]
+    canActivate: [IsAuthenticatedGuard],
+    title: 'Profile'
   },
   {
     path: 'themes',
-    component: ThemesComponent
+    component: ThemesComponent,
+    title: 'Themes'
   },
   {
     path: 'themes/new',
     component: NewThemeComponent,
-    canActivate: [IsAuthenticatedGuard]
+    canActivate: [IsAuthenticatedGuard],
+    title: 'New Theme'
   },
   {
     path: 'themes/details/:id',
-    component: ThemeDetailsComponent
+    component: ThemeDetailsComponent,
+    title: 'Theme Details'
   },
   {
     path: '**',
-    component: NotFoundComponent
-  }
+    component: NotFoundComponent,
+    title: '404'
+  },
 ]
 
 @NgModule({
   declarations: [],
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    {
+      provide: TitleStrategy,
+      useClass: PageTitleStrategy
+    }
+  ]
 })
 export class AppRoutingModule { }
