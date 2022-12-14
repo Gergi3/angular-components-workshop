@@ -4,7 +4,7 @@ export const paths = {
   login: 'login',
   logout: 'logout',
   profile: 'profile',
-  profileEdit: 'profile/edit/:id',
+  profileEdit: 'profile/edit',
   themes: 'themes',
   newTheme: 'themes/new',
   themeDetails: 'themes/details/:id'

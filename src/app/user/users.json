@@ -1,10 +1,10 @@
 [
   {
     "_id": "1",
-    "email": "asd@asd.asd",
-    "username": "Pesho",
-    "password": "123",
-    "tel": "089773123",
+    "email": "adminn@gmail.com",
+    "username": "Pesho Penev",
+    "password": "asdasd",
+    "tel": "+359123123123",
     "themes": [],
     "posts": [],
     "created_at": "today",

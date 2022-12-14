@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { ThemesService } from '../themes.service';
 import { Router } from '@angular/router';
 
@@ -9,23 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-theme.component.scss']
 })
 export class NewThemeComponent {
-
-  themeForm = this.fb.group({
-    themeName: [''],
-    postText: ['']
-  })
-
   constructor(
-    private fb: FormBuilder,
     private themesService: ThemesService,
     private router: Router
   ) { }
 
-  createThemeHandler() {
-    let name = this.themeForm.get('themeName')?.value;
+  createThemeHandler(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
 
-    if (!name) return;
-    
+    let name: string = form.value?.['themeName'] || '';
+
     let createdTheme = this.themesService.create(name);
     createdTheme.subscribe(x => {
       // TODO: Fix unauthorized

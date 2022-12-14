@@ -13,7 +13,6 @@ import { LogoutComponent } from './authentication/logout/logout.component';
 import { IsNotAuthenticatedGuard } from './guards/is-not-authenticated.guard';
 import { IsAuthenticatedGuard } from './guards/is-authenticated.guard';
 import { PageTitleStrategy } from './core/page-title-strategy';
-import { UserProfileEditComponent } from './user/user-profile-edit/user-profile-edit.component';
 import { paths } from './routing-paths';
 
 const routes: Route[] = [
@@ -47,12 +46,6 @@ const routes: Route[] = [
   {
     path: paths.profile,
     component: UserProfileComponent,
-    canActivate: [IsAuthenticatedGuard],
-    title: 'Profile'
-  },
-  {
-    path: paths.profileEdit,
-    component: UserProfileEditComponent,
     canActivate: [IsAuthenticatedGuard],
     title: 'Profile'
   },

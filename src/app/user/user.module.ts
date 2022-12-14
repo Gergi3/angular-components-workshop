@@ -2,15 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
-  declarations: [UserProfileComponent, UserProfileEditComponent],
+  declarations: [UserProfileComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class UserModule { }

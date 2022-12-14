@@ -18,7 +18,7 @@ export class RegisterComponent {
       password: ['', [Validators.required, Validators.minLength(5)]],
       rePassword: ['', [Validators.required]]
     }, { validator: confirmPasswordsValidator }),
-    selectTel: ['00359', [Validators.required]],
+    selectTel: ['+359', [Validators.required]],
     tel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
   });
 
