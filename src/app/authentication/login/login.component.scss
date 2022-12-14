@@ -1,33 +1,28 @@
-/*login register forms  */
 
-form.login,
-form.register {
+
+form.login {
   width: 40%;
   margin: 2em auto 0;
   text-align: center;
 }
 
-.login fieldset,
-.register fieldset {
+.login fieldset {
   border-radius: 0.3em;
   padding: 0.8em;
   background-color: #ffffff;
 }
 
-.login h2,
-.register h2 {
+.login h2 {
   padding-top: 0;
   border-bottom: none;
 }
 
-.login p,
-.register p {
+.login p {
   padding-bottom: 0;
   padding-top: 1.5rem;
 }
 
-.login input,
-.register input {
+.login input {
   flex: 0 1 100%;
   border: 1px solid;
   padding: 0.3em;
@@ -36,13 +31,11 @@ form.register {
   border-bottom-right-radius: 0.3em;
 }
 
-.login select,
-.register select {
+.login select {
   border-color: black;
 }
 
-.login button,
-.register button {
+.login button {
   color: white;
   border: none;
   border-radius: 0.3em;
@@ -52,8 +45,7 @@ form.register {
   outline: none;
 }
 
-.login i,
-.register i {
+.login i {
   border: 1px solid;
   border-right: none;
   padding: 0.55em;
@@ -62,35 +54,20 @@ form.register {
   background-color: #e9ecef;
 }
 
-.login a,
-.register a {
+.login a {
   color: #007bff;
 }
 
-.login a:hover,
-.register a:hover {
+.login a:hover {
   cursor: pointer;
 }
 
-.register .tel {
-  padding-right: 0.8em;
-}
-
-.login .field,
-.register .field {
+.login .field {
   display: flex;
   padding-bottom: 0;
 }
 
-/* errors  */
-
-p.error {
-  text-align: left;
-  border-radius: 0.3em;
-  color: red;
-  padding-top: 0;
-}
-
-.input-error {
-  border-left-color: red;
+/*login register forms  */
+.ng-invalid.ng-touched {
+  border-left-color: red !important;
 }

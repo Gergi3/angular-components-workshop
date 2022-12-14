@@ -1,5 +1,5 @@
-export interface IUser {
-  [key: string]: any,
+import { IIndexable } from './indexable.model';
+export interface IUser extends IIndexable {
   _id: string
   email: string
   username: string

@@ -1,20 +1,25 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { createEmailValidator } from 'src/app/shared/validators/email.validator';
+import { confirmPasswordsValidator } from 'src/app/shared/validators/confirm-passwords.validator';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['../../shared/form-error/form-error.component.scss', './register.component.scss']
 })
 export class RegisterComponent {
   registerForm = this.fb.group({
-    username: '',
-    email: '',
-    password: '',
-    rePassword: '',
-    tel: '',
+    username: ['', [Validators.required, Validators.minLength(5)]],
+    email: ['', [Validators.required, createEmailValidator(['gmail'], ['bg', 'com'])]],
+    passwords: this.fb.group({
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      rePassword: ['', [Validators.required]]
+    }, { validator: confirmPasswordsValidator }),
+    selectTel: ['00359', [Validators.required]],
+    tel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
   });
 
   constructor(
@@ -24,6 +29,11 @@ export class RegisterComponent {
   ) { }
 
   registerHandler() {
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      return; 
+    }
+
     const username = this.registerForm.get('username')?.value || ''
     const email = this.registerForm.get('email')?.value || ''
     const password = this.registerForm.get('password')?.value || ''
