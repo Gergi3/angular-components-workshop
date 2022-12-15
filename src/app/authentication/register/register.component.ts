@@ -18,8 +18,8 @@ export class RegisterComponent {
       password: ['', [Validators.required, Validators.minLength(5)]],
       rePassword: ['', [Validators.required]]
     }, { validator: confirmPasswordsValidator }),
-    selectTel: ['+359', [Validators.required]],
-    tel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+    selectTel: ['+359'],
+    tel: ['', [Validators.minLength(9), Validators.maxLength(9)]],
   });
 
   constructor(
@@ -34,15 +34,11 @@ export class RegisterComponent {
       return; 
     }
 
-    const username = this.registerForm.get('username')?.value || ''
-    const email = this.registerForm.get('email')?.value || ''
-    const password = this.registerForm.get('password')?.value || ''
-    const rePassword = this.registerForm.get('rePassword')?.value || ''
-    const tel = this.registerForm.get('tel')?.value || ''
+    const { username, email, passwords: { password, rePassword }, tel } = this.registerForm.value;
 
     if (password !== rePassword) return;
 
-    this.authService.register(email, username, password, tel);
+    this.authService.register(email!, username!, password!, rePassword!, tel!);
     this.router.navigate(['/home']);
     this.registerForm.reset();
   }

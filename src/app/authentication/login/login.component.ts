@@ -28,10 +28,9 @@ export class LoginComponent {
       return;
     }
 
-    const email = this.loginForm.get('email')?.value || '';
-    const password = this.loginForm.get('password')?.value || '';
+    const { email, password } = this.loginForm.value;
 
-    this.authService.login(email, password);
+    this.authService.login(email!, password!);
     this.router.navigate([
       this.authService.isLoggedIn ? '/home' : '/login'
     ]);

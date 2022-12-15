@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { createEmailValidator } from 'src/app/shared/validators/email.validator';
 import { AuthService } from '../../authentication/auth.service';
 import { IUser } from '../../shared/interfaces/index.model';
-import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -25,9 +23,7 @@ export class UserProfileComponent {
 
   constructor(
     private authService: AuthService,
-    private usersService: UsersService,
-    private fb: FormBuilder,
-    private router: Router
+    private fb: FormBuilder
   ) { }
   
   toggleEdit() {
@@ -40,14 +36,9 @@ export class UserProfileComponent {
       return;
     }
 
-    const username = this.profileForm.get('username')?.value || ''
-    const email = this.profileForm.get('email')?.value || ''
-    const tel = this.profileForm.get('tel')?.value || ''
+    let { username, email, tel } = this.profileForm.value;
 
-    let userId = this.authService.userId || '';
-    this.usersService.putById(userId, { username, email, tel });
-    this.authService.changeUser(this.usersService.getById(userId) || null);
-    this.user = this.authService.currentUser;
+    // TODO: Send edit request
     
     this.toggleEdit();    
   }

@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { IIndexable } from '../interfaces/indexable.model';
-import { UtilsService } from '../utils.service';
 import { validationErrorMessages } from '../validators/validation-error-messages';
 
 @Component({
@@ -35,12 +34,11 @@ export class FormErrorItemComponent {
       options['pattern'] = this.control?.errors?.['pattern']
     }
 
-    const nameCapitalized = this.utilsService.capitalize(this.controlName);
+    
+    const nameCapitalized = this.controlName.charAt(0).toLocaleUpperCase() + this.controlName.slice(1).toLowerCase();
 
     return messageFn(nameCapitalized, options);
   }
 
-  constructor(
-    private utilsService: UtilsService
-  ) { }
+  constructor() { }
 }
