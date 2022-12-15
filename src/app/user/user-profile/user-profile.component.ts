@@ -10,7 +10,7 @@ import { IUser } from '../../shared/interfaces/index.model';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent {
-  user: IUser | null = this.authService.currentUser;
+  user: IUser | null = this.authService.user;
   
   profileForm = this.fb.group({
     username: [this.user?.username, [Validators.required, Validators.minLength(5)]],

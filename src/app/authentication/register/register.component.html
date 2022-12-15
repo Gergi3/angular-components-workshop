@@ -9,36 +9,33 @@
         <label for="username"><span><i class="fas fa-user"></i></span></label>
         <input type="text" id="username" placeholder="Johny" formControlName="username">
       </p>
-      <app-form-error [group]="registerForm" [controlName]="'username'"></app-form-error>
+      <app-form-error [group]="registerForm" controlName="username"></app-form-error>
 
       <p class="field field-icon">
         <label for="email"><span><i class="fas fa-envelope"></i></span></label>
         <input type="email" id="email" placeholder="john.doe@gmail.com" formControlName="email">
       </p>
-      <app-form-error [group]="registerForm" [controlName]="'email'"></app-form-error>
+      <app-form-error [group]="registerForm" controlName="email"></app-form-error>
 
       <p class="field field-icon">
         <label for="tel"><span><i class="fas fa-phone"></i></span></label>
-        <select name="select-tel" id="select-tel" class="tel" formControlName="selectTel">
-          <option value="+359">+359</option>
-        </select>
         <input type="text" id="tel" placeholder="885 888 888" formControlName="tel">
       </p>
-      <app-form-error [group]="registerForm" [controlName]="'tel'"></app-form-error>
+      <app-form-error [group]="registerForm" controlName="tel"></app-form-error>
 
       <div formGroupName="passwords">
         <p class="field field-icon">
           <label for="password"><span><i class="fas fa-lock"></i></span></label>
           <input type="password" id="password" placeholder="******" formControlName="password">
         </p>
-        <app-form-error [group]="registerForm.controls.passwords" [controlName]="'password'"></app-form-error>
+        <app-form-error [group]="registerForm.controls.passwords" controlName="password"></app-form-error>
 
         <p class="field field-icon">
           <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
           <input type="password" id="rePassword" placeholder="******" formControlName="rePassword">
         </p>
-        <app-form-error [group]="registerForm.controls.passwords" [controlName]="'rePassword'"></app-form-error>
-        <app-form-error [group]="registerForm" [controlName]="'passwords'"></app-form-error>
+        <app-form-error [group]="registerForm.controls.passwords" controlName="rePassword"></app-form-error>
+        <app-form-error [group]="registerForm" controlName="passwords"></app-form-error>
       </div>
 
       <button type="submit">Create Account</button>

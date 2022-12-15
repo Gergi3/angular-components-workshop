@@ -10,10 +10,15 @@ import { HomeModule } from './home/home.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
+import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { API_ERROR_TOKEN } from './shared/constants';
+import { BehaviorSubject } from 'rxjs';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthenticateComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,13 @@ import { UserModule } from './user/user.module';
     ThemeModule,
     UserModule
   ],
-  providers: [],
+  providers: [
+    appInterceptorProvider,
+    {
+      provide: API_ERROR_TOKEN,
+      useValue: new BehaviorSubject<Error | null>(null)
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

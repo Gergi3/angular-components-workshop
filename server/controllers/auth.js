@@ -22,7 +22,7 @@ function register(req, res, next) {
 
             const token = utils.jwt.createToken({ id: createdUser._id });
             if (process.env.NODE_ENV === 'production') {
-                res.cookie(authCookieName, token, { httpOnly: true, sameSite: 'none', secure: true })
+                res.cookie(authCookieName, token, { httpOnly: true, sameSite: 'none', secure: false })
             } else {
                 res.cookie(authCookieName, token, { httpOnly: true })
             }
@@ -62,7 +62,7 @@ function login(req, res, next) {
             const token = utils.jwt.createToken({ id: user._id });
 
             if (process.env.NODE_ENV === 'production') {
-                res.cookie(authCookieName, token, { httpOnly: true, sameSite: 'none', secure: true })
+                res.cookie(authCookieName, token, { httpOnly: true, sameSite: 'none', secure: false })
             } else {
                 res.cookie(authCookieName, token, { httpOnly: true })
             }

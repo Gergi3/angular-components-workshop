@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { requestsUrls } from '../shared/constants';
 import { IPost } from '../shared/interfaces/index.model';
 import { map, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +14,13 @@ export class PostsService {
   ) { }
 
   getAll(): Observable<IPost[]> {
-    return this.http.get<IPost[]>(requestsUrls.posts);
+    return this.http.get<IPost[]>(environment.URLS.postsURL());
   }
 
   getAllLimited(limit: number): Observable<IPost[]> {
     if (limit < 0) limit = 5;
 
-    return this.http.get<IPost[]>(requestsUrls.postsWithLimit(limit))
+    return this.http.get<IPost[]>(environment.URLS.postsWithLimitURL(limit))
   }
 
   getAllByThemeId(themeId: string): Observable<IPost[]> {

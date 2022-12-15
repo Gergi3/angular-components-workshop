@@ -1,11 +1,3 @@
-const baseUrl = 'http://localhost:3000/api';
+import { InjectionToken } from "@angular/core";
 
-export const requestsUrls = {
-  base: baseUrl,
-  
-  themes: `${baseUrl}/themes`,
-  themesId: (id: string) => `${baseUrl}/themes/${id}`,
-
-  posts: `${baseUrl}/posts`,
-  postsWithLimit: (limit: string | number) => `${baseUrl}/posts?limit=${limit}`
-}
+export const API_ERROR_TOKEN = new InjectionToken('API_ERROR');

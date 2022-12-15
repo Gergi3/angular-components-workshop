@@ -16,7 +16,7 @@ export class IsAuthenticatedGuard implements CanActivate {
     if (this.authService.isLoggedIn) {
       return true
     }
-    return this.router.createUrlTree(['/home'])
+    return this.router.createUrlTree(['/login'])
   }
 
 }

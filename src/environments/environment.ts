@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  URLS: {
+    apiURL: () => 'http://localhost:3000/api',
+    
+    themesURL: () => `/api/themes`,
+    themesIdURL: (id: string) => `/api/themes/${id}`,
+
+    postsURL: () => `/api/posts`,
+    postsWithLimitURL: (limit: string | number) => `/api/posts?limit=${limit}`
+  }
 };
 
 /*

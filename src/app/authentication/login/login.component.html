@@ -7,13 +7,13 @@
         <label for="email"><span><i class="fas fa-envelope"></i></span></label>
         <input name="email" type="email" id="email" placeholder="john.doe@gmail.com" formControlName="email" />
       </p>
-      <app-form-error [group]="loginForm" [controlName]="'email'"></app-form-error>
+      <app-form-error [group]="loginForm" controlName="email"></app-form-error>
 
       <p class="field field-icon">
         <label for="password"><span><i class="fas fa-lock"></i></span></label>
         <input type="password" id="password" placeholder="******" formControlName="password" />
       </p>
-      <app-form-error [group]="loginForm" [controlName]="'password'"></app-form-error>
+      <app-form-error [group]="loginForm" controlName="password"></app-form-error>
 
       <button type="button" (click)="loginHandler()">Login</button>
 

@@ -18,28 +18,26 @@ export class RegisterComponent {
       password: ['', [Validators.required, Validators.minLength(5)]],
       rePassword: ['', [Validators.required]]
     }, { validator: confirmPasswordsValidator }),
-    selectTel: ['+359'],
-    tel: ['', [Validators.minLength(9), Validators.maxLength(9)]],
+    tel: ['', [Validators.minLength(10), Validators.maxLength(10)]],
   });
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private authService: AuthService,
-    private router: Router
   ) { }
 
   registerHandler() {
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
-      return; 
+      return;
     }
-
     const { username, email, passwords: { password, rePassword }, tel } = this.registerForm.value;
 
-    if (password !== rePassword) return;
-
-    this.authService.register(email!, username!, password!, rePassword!, tel!);
-    this.router.navigate(['/home']);
-    this.registerForm.reset();
+    this.authService.register(email!, username!, password!, rePassword!, tel!)
+      .subscribe({
+        next: user => this.router.navigate(['/home']),
+        error: err => console.log(err)
+      });
   }
 }

@@ -30,9 +30,10 @@ export class LoginComponent {
 
     const { email, password } = this.loginForm.value;
 
-    this.authService.login(email!, password!);
-    this.router.navigate([
-      this.authService.isLoggedIn ? '/home' : '/login'
-    ]);
+    this.authService.login(email!, password!)
+      .subscribe({
+        next: user => this.router.navigate(['/home']),
+        error: err => console.log(err)
+      });
   }
 }

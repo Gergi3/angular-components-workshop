@@ -1,3 +1,6 @@
+import * as environmentDev from "./environment";
+
 export const environment = {
-  production: true
+  production: true,
+  ...(environmentDev.environment.URLS)
 };

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { requestsUrls } from '../shared/constants';
 import { ITheme } from '../shared/interfaces/index.model';
 import { Observable, map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ThemesService {
   ) { }
 
   getAll(): Observable<ITheme[]> {
-    return this.http.get<ITheme[]>(requestsUrls.themes);
+    return this.http.get<ITheme[]>(environment.URLS.themesURL());
   }
 
   getAllSortedBySubscription(sort: 'desc' | 'asc' = 'desc'): Observable<ITheme[]> {
@@ -34,10 +34,10 @@ export class ThemesService {
   }
 
   getById(id: string) {
-    return this.http.get<ITheme>(requestsUrls.themesId(id));
+    return this.http.get<ITheme>(environment.URLS.themesIdURL(id));
   }
 
   create(themeName: string) {
-    return this.http.post<ITheme>(requestsUrls.themes, { themeName });
+    return this.http.post<ITheme>(environment.URLS.themesURL(), { themeName });
   }
 }
